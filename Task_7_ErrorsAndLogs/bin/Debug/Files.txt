@@ -1,0 +1,1 @@
+boot.ini;c:;q.txt;c:;q.txt;c:\p;q.txt;c:\p\p;q.txt;c:\p\p\p;
