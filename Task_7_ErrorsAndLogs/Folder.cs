@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task_7_ErrorsAndLogs
 {
-    internal class Folder : IVirtualFilesystem//, IEquatable<Folder>
+    internal class Folder : IVirtualFilesystem
     {
         private string name;
         private string locationFolder;
@@ -20,52 +20,84 @@ namespace Task_7_ErrorsAndLogs
             this.LocationFolder = locationFolder;
         }
 
-        public bool IsExist(string name, List<Folder> folderList)
-        {
-            foreach (Folder item in folderList)
-            {
-                if (item.Name == name)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
 
-        public bool IsExistTwice(string name, string motherFolder, List<Folder> folderList)
+        // true
+        private bool IsExist(string locationPath, List<Folder> folderList)
         {
             foreach (Folder item in folderList)
             {
-                if (item.Name == name && item.locationFolder == motherFolder)
+                if(locationPath == item.LocationFolder + "\\" + item.Name || locationPath == "c:")
                 {
                     return true;
                 }
             }
             return false;
         }
+        //{
+        //    foreach (Folder item in folderList)
+        //    {
+        //        if (item.Name == name && item.LocationFolder == path)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
+
+        ////private bool IsExistTwice(string nameFolder, string path, List<Folder> folderList)
+        ////{
+        ////    foreach (Folder item in folderList)
+        ////    {
+        ////        if (path + nameFolder == item.locationFolder + item.Name)
+        ////        {
+        ////            return true;
+        ////        }
+        ////    }
+        ////    return false;
+        ////}
+        //{
+        //    foreach (Folder item in folderList)
+        //    {
+        //        if (item.Name == nameFolder && item.locationFolder == path)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
         
-        public int CreateFolder(string locationPath, List<Folder> folderList)
+        public int Create(string locationPath, List<Files> fileList, List<Folder> folderList)
         {
             char[] slash = new char[] { '\\' };
+
             string[] folderDir = locationPath.Split(slash);
-            for (int i = 1; i < folderDir.Length - 2; i++)
+            string path = "";
+            for(int i = 0; i < folderDir.Length - 1; i++)
             {
-                if (!IsExist(folderDir[i], folderList))
-                {
-                    return 1; // Несуществующий путь.
-                }
+                path += folderDir[i];
+                if (i != folderDir.Length - 2)
+                    path += "\\";
             }
-            if(IsExistTwice(folderDir[folderDir.Length - 1], folderDir[folderDir.Length - 2], folderList))
+            string endPath = folderDir[folderDir.Length - 1];
+            
+            if (!IsExist(path, folderList))
             {
-                return 2; // Файл в заданной директории уже существует.
+                return 1; // Несуществующий путь.
             }
-            //List<Folder> folderList = new List<Folder>();
-            if (!IsExist(folderDir[folderDir.Length - 1], folderList) && IsExist(folderDir[folderDir.Length - 2], folderList))
+            
+            if(IsExist(path + "\\" + endPath, folderList))
             {
-                folderList.Add(new Folder(folderDir[folderDir.Length - 1], folderDir[folderDir.Length - 2]));
+                return 2; // Папка в заданной директории уже существует.
+            }
+            try
+            {
+                folderList.Add(new Folder(endPath, path));//folderDir[folderDir.Length - 2]));
                 return 0;
             }
-            return 3; // Неизвестная ошибка.
+            catch
+            {
+                return 3; // Неизвестная ошибка.
+            }
         }
     }
 }

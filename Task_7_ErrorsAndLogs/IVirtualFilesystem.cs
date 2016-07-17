@@ -8,7 +8,6 @@ namespace Task_7_ErrorsAndLogs
 {
     internal interface IVirtualFilesystem
     {
-        int CreateFolder(string locationPath, List<Folder> folderList);
-        //int CreateFile(string locationPath, List<File> fileList);
+        int Create(string locationPath, List<Files> fileList, List<Folder> folderList);
     }
 }
