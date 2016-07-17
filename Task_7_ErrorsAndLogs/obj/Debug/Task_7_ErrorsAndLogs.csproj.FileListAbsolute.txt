@@ -1,0 +1,6 @@
+C:\EPAM\Task_7_ErrorsAndLogs\Task_7_ErrorsAndLogs\bin\Debug\Task_7_ErrorsAndLogs.exe.config
+C:\EPAM\Task_7_ErrorsAndLogs\Task_7_ErrorsAndLogs\obj\Debug\Task_7_ErrorsAndLogs.csprojResolveAssemblyReference.cache
+C:\EPAM\Task_7_ErrorsAndLogs\Task_7_ErrorsAndLogs\bin\Debug\Task_7_ErrorsAndLogs.exe
+C:\EPAM\Task_7_ErrorsAndLogs\Task_7_ErrorsAndLogs\bin\Debug\Task_7_ErrorsAndLogs.pdb
+C:\EPAM\Task_7_ErrorsAndLogs\Task_7_ErrorsAndLogs\obj\Debug\Task_7_ErrorsAndLogs.exe
+C:\EPAM\Task_7_ErrorsAndLogs\Task_7_ErrorsAndLogs\obj\Debug\Task_7_ErrorsAndLogs.pdb
